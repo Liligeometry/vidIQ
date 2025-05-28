@@ -32,7 +32,7 @@ import {
 } from 'lucide-react';
 
 // Header Component
-const Header = ({ isLanding = true }) => {
+const Header = ({ isLanding = true, currentPage = 'landing' }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -69,13 +69,23 @@ const Header = ({ isLanding = true }) => {
           )}
 
           {!isLanding && (
-            <div className="flex items-center space-x-4">
-              <Bell className="w-5 h-5 text-slate-400 hover:text-white cursor-pointer" />
-              <Settings className="w-5 h-5 text-slate-400 hover:text-white cursor-pointer" />
-              <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center">
-                <User className="w-4 h-4 text-slate-300" />
+            <>
+              <nav className="hidden md:flex items-center space-x-6">
+                <a href="/dashboard" className={`text-sm font-medium transition-colors ${currentPage === 'dashboard' ? 'text-blue-400' : 'text-slate-300 hover:text-white'}`}>
+                  Dashboard
+                </a>
+                <a href="/keyword-research" className={`text-sm font-medium transition-colors ${currentPage === 'keyword-research' ? 'text-blue-400' : 'text-slate-300 hover:text-white'}`}>
+                  Keyword Research
+                </a>
+              </nav>
+              <div className="flex items-center space-x-4">
+                <Bell className="w-5 h-5 text-slate-400 hover:text-white cursor-pointer" />
+                <Settings className="w-5 h-5 text-slate-400 hover:text-white cursor-pointer" />
+                <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center">
+                  <User className="w-4 h-4 text-slate-300" />
+                </div>
               </div>
-            </div>
+            </>
           )}
         </div>
       </div>
