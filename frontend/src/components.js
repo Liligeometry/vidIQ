@@ -579,6 +579,354 @@ const Footer = () => {
   );
 };
 
+// Dashboard Sidebar
+const DashboardSidebar = () => {
+  const menuItems = [
+    { icon: <Home className="w-5 h-5" />, label: "Dashboard", active: true },
+    { icon: <BarChart3 className="w-5 h-5" />, label: "Analytics" },
+    { icon: <Search className="w-5 h-5" />, label: "Keyword Research" },
+    { icon: <Lightbulb className="w-5 h-5" />, label: "Daily Ideas" },
+    { icon: <Video className="w-5 h-5" />, label: "Video Optimization" },
+    { icon: <Users className="w-5 h-5" />, label: "Competitors" },
+    { icon: <Camera className="w-5 h-5" />, label: "Thumbnails" },
+    { icon: <Award className="w-5 h-5" />, label: "Achievement" },
+  ];
+
+  return (
+    <div className="fixed left-0 top-16 w-64 h-screen bg-slate-800 border-r border-slate-700">
+      <div className="p-4">
+        <nav className="space-y-2">
+          {menuItems.map((item, index) => (
+            <a
+              key={index}
+              href="#"
+              className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
+                item.active
+                  ? 'bg-blue-600 text-white'
+                  : 'text-slate-300 hover:bg-slate-700 hover:text-white'
+              }`}
+            >
+              {item.icon}
+              <span className="ml-3">{item.label}</span>
+            </a>
+          ))}
+        </nav>
+      </div>
+    </div>
+  );
+};
+
+// Stats Card Component
+const StatsCard = ({ icon, title, value, change, positive = true }) => {
+  return (
+    <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+      <div className="flex items-center justify-between mb-4">
+        <div className="p-2 bg-blue-600/20 rounded-lg text-blue-400">
+          {icon}
+        </div>
+        <div className={`text-sm ${positive ? 'text-green-400' : 'text-red-400'}`}>
+          {change}
+        </div>
+      </div>
+      <h3 className="text-2xl font-bold text-white mb-1">{value}</h3>
+      <p className="text-slate-400 text-sm">{title}</p>
+    </div>
+  );
+};
+
+// Video Performance Table
+const VideoPerformanceTable = () => {
+  const videos = [
+    {
+      title: "How to Grow Your YouTube Channel in 2024",
+      views: "45.2K",
+      likes: "2.1K",
+      comments: "234",
+      duration: "12:34",
+      published: "2 days ago",
+      thumbnail: "https://images.unsplash.com/photo-1548328928-34db1c5fcc1f"
+    },
+    {
+      title: "YouTube Analytics Explained for Beginners",
+      views: "32.8K",
+      likes: "1.8K",
+      comments: "156",
+      duration: "8:45",
+      published: "5 days ago",
+      thumbnail: "https://images.unsplash.com/photo-1545063328-c8e3faffa16f"
+    },
+    {
+      title: "Best YouTube SEO Tips and Tricks",
+      views: "28.3K",
+      likes: "1.5K",
+      comments: "189",
+      duration: "15:22",
+      published: "1 week ago",
+      thumbnail: "https://images.unsplash.com/photo-1477013743164-ffc3a5e556da"
+    },
+    {
+      title: "Creating Viral YouTube Content",
+      views: "67.9K",
+      likes: "3.2K",
+      comments: "445",
+      duration: "10:17",
+      published: "2 weeks ago",
+      thumbnail: "https://images.pexels.com/photos/8532858/pexels-photo-8532858.jpeg"
+    }
+  ];
+
+  return (
+    <div className="bg-slate-800 rounded-xl border border-slate-700">
+      <div className="p-6 border-b border-slate-700">
+        <h3 className="text-lg font-semibold text-white">Recent Videos Performance</h3>
+      </div>
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-slate-700">
+              <th className="text-left p-4 text-slate-400 font-medium">Video</th>
+              <th className="text-left p-4 text-slate-400 font-medium">Views</th>
+              <th className="text-left p-4 text-slate-400 font-medium">Engagement</th>
+              <th className="text-left p-4 text-slate-400 font-medium">Published</th>
+            </tr>
+          </thead>
+          <tbody>
+            {videos.map((video, index) => (
+              <tr key={index} className="border-b border-slate-700/50 hover:bg-slate-700/30">
+                <td className="p-4">
+                  <div className="flex items-center">
+                    <div className="w-16 h-12 rounded-lg overflow-hidden mr-3 bg-slate-700">
+                      <img 
+                        src={video.thumbnail} 
+                        alt={video.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium text-sm mb-1 line-clamp-2">{video.title}</h4>
+                      <span className="text-slate-400 text-xs">{video.duration}</span>
+                    </div>
+                  </div>
+                </td>
+                <td className="p-4">
+                  <span className="text-white font-medium">{video.views}</span>
+                </td>
+                <td className="p-4">
+                  <div className="flex items-center space-x-4 text-sm text-slate-400">
+                    <div className="flex items-center">
+                      <ThumbsUp className="w-4 h-4 mr-1" />
+                      {video.likes}
+                    </div>
+                    <div className="flex items-center">
+                      <MessageSquare className="w-4 h-4 mr-1" />
+                      {video.comments}
+                    </div>
+                  </div>
+                </td>
+                <td className="p-4">
+                  <span className="text-slate-400 text-sm">{video.published}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+// Daily Ideas Widget
+const DailyIdeasWidget = () => {
+  const ideas = [
+    "10 YouTube Thumbnail Mistakes That Kill Your Views",
+    "How to Use YouTube Shorts to Boost Your Main Channel",
+    "Secret YouTube Algorithm Changes in 2024",
+    "Why Your YouTube Channel Isn't Growing (And How to Fix It)"
+  ];
+
+  return (
+    <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-semibold text-white">Today's Video Ideas</h3>
+        <Lightbulb className="w-5 h-5 text-yellow-400" />
+      </div>
+      <div className="space-y-3">
+        {ideas.map((idea, index) => (
+          <div key={index} className="p-3 bg-slate-700/50 rounded-lg border border-slate-600/30">
+            <p className="text-white text-sm mb-2">{idea}</p>
+            <div className="flex items-center justify-between">
+              <span className="text-slate-400 text-xs">Trending potential: High</span>
+              <Heart className="w-4 h-4 text-slate-400 hover:text-red-400 cursor-pointer" />
+            </div>
+          </div>
+        ))}
+      </div>
+      <button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm font-medium transition-colors">
+        Generate More Ideas
+      </button>
+    </div>
+  );
+};
+
+// Analytics Chart Component
+const AnalyticsChart = () => {
+  return (
+    <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-lg font-semibold text-white">Channel Analytics</h3>
+        <div className="flex items-center space-x-2">
+          <button className="px-3 py-1 bg-blue-600 text-white rounded text-sm">7D</button>
+          <button className="px-3 py-1 text-slate-400 hover:text-white rounded text-sm">30D</button>
+          <button className="px-3 py-1 text-slate-400 hover:text-white rounded text-sm">90D</button>
+        </div>
+      </div>
+      
+      <div className="h-64 bg-slate-700/30 rounded-lg flex items-center justify-center mb-4">
+        <div className="w-full h-full bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-lg p-4">
+          <img 
+            src="https://images.unsplash.com/photo-1477013743164-ffc3a5e556da" 
+            alt="Analytics Chart"
+            className="w-full h-full object-cover rounded opacity-50"
+          />
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-3 gap-4">
+        <div className="text-center">
+          <p className="text-2xl font-bold text-white">12.3K</p>
+          <p className="text-slate-400 text-sm">Views</p>
+        </div>
+        <div className="text-center">
+          <p className="text-2xl font-bold text-white">847</p>
+          <p className="text-slate-400 text-sm">Watch Time (hrs)</p>
+        </div>
+        <div className="text-center">
+          <p className="text-2xl font-bold text-white">156</p>
+          <p className="text-slate-400 text-sm">New Subscribers</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Dashboard Component
+export const Dashboard = () => {
+  return (
+    <div className="min-h-screen bg-slate-900">
+      <Header isLanding={false} />
+      <DashboardSidebar />
+      
+      <div className="ml-64 pt-16">
+        <div className="p-8">
+          {/* Header */}
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-white mb-2">Dashboard</h1>
+            <p className="text-slate-400">Welcome back! Here's what's happening with your channel.</p>
+          </div>
+
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <StatsCard
+              icon={<Eye className="w-6 h-6" />}
+              title="Total Views"
+              value="1.2M"
+              change="+12.5%"
+              positive={true}
+            />
+            <StatsCard
+              icon={<Users className="w-6 h-6" />}
+              title="Subscribers"
+              value="45.2K"
+              change="+8.3%"
+              positive={true}
+            />
+            <StatsCard
+              icon={<Clock className="w-6 h-6" />}
+              title="Watch Time"
+              value="2.1K hrs"
+              change="+15.7%"
+              positive={true}
+            />
+            <StatsCard
+              icon={<TrendingUp className="w-6 h-6" />}
+              title="Engagement Rate"
+              value="4.8%"
+              change="-2.1%"
+              positive={false}
+            />
+          </div>
+
+          {/* Main Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Left Column */}
+            <div className="lg:col-span-2 space-y-8">
+              <AnalyticsChart />
+              <VideoPerformanceTable />
+            </div>
+
+            {/* Right Column */}
+            <div className="space-y-8">
+              <DailyIdeasWidget />
+              
+              {/* Quick Actions */}
+              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <h3 className="text-lg font-semibold text-white mb-4">Quick Actions</h3>
+                <div className="space-y-3">
+                  <button className="w-full flex items-center justify-between p-3 bg-slate-700/50 hover:bg-slate-700 rounded-lg transition-colors">
+                    <div className="flex items-center">
+                      <Search className="w-5 h-5 text-blue-400 mr-3" />
+                      <span className="text-white">Keyword Research</span>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-slate-400" />
+                  </button>
+                  
+                  <button className="w-full flex items-center justify-between p-3 bg-slate-700/50 hover:bg-slate-700 rounded-lg transition-colors">
+                    <div className="flex items-center">
+                      <Camera className="w-5 h-5 text-green-400 mr-3" />
+                      <span className="text-white">Create Thumbnail</span>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-slate-400" />
+                  </button>
+                  
+                  <button className="w-full flex items-center justify-between p-3 bg-slate-700/50 hover:bg-slate-700 rounded-lg transition-colors">
+                    <div className="flex items-center">
+                      <Target className="w-5 h-5 text-purple-400 mr-3" />
+                      <span className="text-white">Optimize Video</span>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-slate-400" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Recent Activity */}
+              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <h3 className="text-lg font-semibold text-white mb-4">Recent Activity</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center text-sm">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                    <span className="text-slate-300">Video uploaded successfully</span>
+                    <span className="text-slate-500 ml-auto">2h ago</span>
+                  </div>
+                  <div className="flex items-center text-sm">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                    <span className="text-slate-300">Keyword research completed</span>
+                    <span className="text-slate-500 ml-auto">4h ago</span>
+                  </div>
+                  <div className="flex items-center text-sm">
+                    <div className="w-2 h-2 bg-yellow-400 rounded-full mr-3"></div>
+                    <span className="text-slate-300">New subscriber milestone reached</span>
+                    <span className="text-slate-500 ml-auto">1d ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // HomePage Component
 export const HomePage = () => {
   return (
