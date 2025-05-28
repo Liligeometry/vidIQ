@@ -1186,7 +1186,7 @@ const AnalyticsChart = () => {
 export const Dashboard = () => {
   return (
     <div className="min-h-screen bg-slate-900">
-      <Header isLanding={false} />
+      <Header isLanding={false} currentPage="dashboard" />
       <DashboardSidebar />
       
       <div className="ml-64 pt-16">
@@ -1245,13 +1245,13 @@ export const Dashboard = () => {
               <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
                 <h3 className="text-lg font-semibold text-white mb-4">Quick Actions</h3>
                 <div className="space-y-3">
-                  <button className="w-full flex items-center justify-between p-3 bg-slate-700/50 hover:bg-slate-700 rounded-lg transition-colors">
+                  <a href="/keyword-research" className="w-full flex items-center justify-between p-3 bg-slate-700/50 hover:bg-slate-700 rounded-lg transition-colors">
                     <div className="flex items-center">
                       <Search className="w-5 h-5 text-blue-400 mr-3" />
                       <span className="text-white">Keyword Research</span>
                     </div>
                     <ExternalLink className="w-4 h-4 text-slate-400" />
-                  </button>
+                  </a>
                   
                   <button className="w-full flex items-center justify-between p-3 bg-slate-700/50 hover:bg-slate-700 rounded-lg transition-colors">
                     <div className="flex items-center">
