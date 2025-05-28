@@ -785,6 +785,14 @@ const DailyIdeasWidget = () => {
     const [selectedFilter, setSelectedFilter] = useState('all');
     const [sortBy, setSortBy] = useState('score');
 
+  // Keyword Research Component
+  export const KeywordResearch = () => {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+    const [isSearching, setIsSearching] = useState(false);
+    const [selectedFilter, setSelectedFilter] = useState('all');
+    const [sortBy, setSortBy] = useState('score');
+
     // Mock keyword data
     const mockKeywords = [
       {
