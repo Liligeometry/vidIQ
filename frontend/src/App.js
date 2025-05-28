@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { HomePage, Dashboard, KeywordResearch } from './components';
+import { HomePage, Dashboard } from './components';
+import KeywordResearch from './KeywordResearch';
 
 function App() {
   return (
